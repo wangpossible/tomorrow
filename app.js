@@ -32,9 +32,7 @@ app.use(session({
   resave:false,
   saveUninitialized:true,
   store: new MongoStore({
-    host:'localhost',
-    port:'27017',
-    db:'bullshit'
+    url:'mongodb://rakuten:whatfangfang@ds055564.mongolab.com:55564/bullshit'
   })
 }));
 

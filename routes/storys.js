@@ -145,11 +145,12 @@ router.get('/delete/:id',requiredAuthentication,function(req, res, next){
  * 创建主题
  * 
 */
-router.post('/theme',requiredAuthentication,function(req, res, next){	
+router.get('/theme',requiredAuthentication,function(req, res, next){	
 	var theme = {'user_id':req.session.user._id,'title':'我们结婚了','content':'经历了漫长的爱情长跑之后，我们结婚了','image':'http://7xoaql.com1.z0.glb.clouddn.com/0.6008898080326617.jpg','ctime':'2015-11-11 11:11:11','mtime':'2015-11-11 11:11:11'};
 	var themeEntity = new mongoDB.theme(theme);
-	themeEntity.save();
-	res.redirect('/story');
+	themeEntity.save(function(error,result){
+		res.redirect('/story');	
+	});	
 });
 
 function requiredAuthentication(req, res, next){
