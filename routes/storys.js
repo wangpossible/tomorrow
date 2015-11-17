@@ -1,7 +1,6 @@
 var express = require('express');
 var moment = require('moment');
 var mongoDB = require('./bullshit-mongo');
-var mysqlDB = require('./bullshit-mysql');
 var qiniuUpload = require('./bullshit-qiniu');
 var formidable = require('formidable');
 var router = express.Router();
@@ -93,11 +92,12 @@ router.post('/create',requiredAuthentication,function(req, res, next){
 			story.storycontent = fields.storyContent;
 			story.storyimage = fname;	
 			var storyEntity = new mongoDB.story(story);
-			storyEntity.save();
-			console.log('创建故事成功');
+			storyEntity.save(function(error,newstory){
+				console.log('创建故事成功');
+				res.redirect('/story');	
+			});
 		})
 	});	
-	res.redirect('/story');	
 });
 
 /**
