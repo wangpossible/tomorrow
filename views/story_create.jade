@@ -3,7 +3,7 @@ extends layout
 block content    
   .container-fluid
       .row.rowspacing
-      form.form-horizontal(method='post', action='/storys/create')
+      form.form-horizontal(method='post', action='/story/create',enctype='multipart/form-data')
           .form-group
           label.col-md-1(for='storyTime') &#x6545;&#x4E8B;&#x65F6;&#x95F4;
           | &#x9;&#x9;&#x9;&#x9;&#x9;
@@ -22,8 +22,15 @@ block content
           | &#x9;&#x9;&#x9;&#x9;&#x9;
           .col-md-11
               textarea#storyContent.form-control(name='storyContent', placeholder='一吐为快')
+          .form-group
+          label.col-md-1(for='storyImage') &#x5F53;&#x65F6;&#x7684;&#x573A;&#x666F;
+          | &#x9;&#x9;&#x9;&#x9;&#x9;
+          .col-md-11
+              input#storyImage.form-control(type='file', name='storyImage')
+          .form-group             
           | &#x9;&#x9;&#x9;&#x9;
-          button.btn.btn-primary.btn-block(type='submit') &#x53D1;&#x5E03;
+          .col-md-12
+              button.btn.btn-primary.btn-block(type='submit') &#x53D1;&#x5E03;
   |     
   script.
       $(function(){

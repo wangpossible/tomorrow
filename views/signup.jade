@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  .container-fluid
+    .row
+      .col-md-8
+        img.img-responsive(src='http://bullshit.qiniudn.com/joinus.jpg', alt='join us')
+      |  
+      | &#x9;&#x9;
+      .col-md-4
+        form(method='post', action='/user/signup', style='margin-top:35px;')
+          .form-group
+            p.text-center
+              strong &#x6CE8;&#x518C;
+          |  
+          | &#x9;&#x9;  
+          .form-group
+            label(for='exampleInputEmail1') &#x90AE;&#x7BB1;
+            |  
+            | &#x9;&#x9;   
+            input#exampleInputEmail1.form-control(type='email', placeholder='Enter email', name='username', style='width:100%;', required='')
+          |  
+          | &#x9;&#x9;  
+          .form-group
+            label(for='exampleInputPassword1') &#x5BC6;&#x7801;
+            |  
+            | &#x9;&#x9;   
+            input#exampleInputPassword1.form-control(type='password', placeholder='Password', name='password', style='width:100%;', required='')
+          !=message
+          |  
+          | &#x9;&#x9;  
+          button.btn.btn-primary.btn-lg.btn-block(type='submit') &#x6CE8;&nbsp;&nbsp;&#x518C;

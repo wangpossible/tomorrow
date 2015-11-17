@@ -1,0 +1,41 @@
+extends layout
+
+block content    
+  .container-fluid
+      .row.rowspacing
+      form.form-horizontal(method='post', action='/story/update')
+          input(type='hidden', name='id' value='#{story._id}')
+          | &#x9;&#x9;&#x9;&#x9;
+          .form-group
+          label.col-md-1(for='storyTime') &#x6545;&#x4E8B;&#x65F6;&#x95F4;
+          | &#x9;&#x9;&#x9;&#x9;&#x9;
+          .col-md-11
+              input#storyTime.form-control(type='text', name='storyTime', placeholder='时间可以证明一切', value='#{story.storytime}')
+          | &#x9;&#x9;&#x9;&#x9;
+          .form-group
+          label.col-md-1(for='storyPlace') &#x6545;&#x4E8B;&#x5730;&#x70B9;
+          | &#x9;&#x9;&#x9;&#x9;&#x9;
+          .col-md-11
+              input#storyPlace.form-control(type='text', name='storyPlace', placeholder='你还记得在那不', value='#{story.storyplace}')
+          | &#x9;
+          | &#x9;&#x9;&#x9;&#x9;
+          .form-group
+          label.col-md-1(for='storyContent') &#x73B0;&#x5728;&#x7684;&#x5FC3;&#x60C5;
+          | &#x9;&#x9;&#x9;&#x9;&#x9;
+          .col-md-11
+              textarea#storyContent.form-control(name='storyContent', placeholder='一吐为快')= story.storycontent
+          .form-group             
+          | &#x9;&#x9;&#x9;&#x9;
+          .col-md-12
+              button.btn.btn-primary.btn-block(type='submit') &#x53D1;&#x5E03;
+  |     
+  script.
+      $(function(){
+      $('#storyTime').datetimepicker({
+      language: 'zh-CN',
+      format: "yyyy-mm-dd hh:ii",
+      autoclose: true,
+      todayBtn: true,
+      todayHighlight:true
+      });
+      });
